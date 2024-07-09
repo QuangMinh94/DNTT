@@ -144,6 +144,7 @@
     "Screen_Detail_Invoice",
     "Screen_Approver_Home_Approval",
     "Screen_Approver_Loading",
-    "Screen_Approver_AdvanceReceivables"
+    "Screen_Approver_AdvanceReceivables",
+    "Screen1"
   ]
 }
