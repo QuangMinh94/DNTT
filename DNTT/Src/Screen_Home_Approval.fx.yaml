@@ -1564,7 +1564,7 @@ Screen_Home_Approval As screen:
                         FocusedBorderThickness: =4
                         Font: =Font.'Segoe UI'
                         Height: =Parent.Height
-                        HintText: ="Nhìn gì"
+                        HintText: ="Buồn ngủ"
                         HoverBorderColor: =RGBA(16, 110, 190, 1)
                         HoverColor: =
                         HoverFill: =RGBA(236, 236, 235, 0.3)
