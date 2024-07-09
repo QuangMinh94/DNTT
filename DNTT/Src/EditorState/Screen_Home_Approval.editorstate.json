@@ -21618,7 +21618,7 @@
         {
           "Category": "Data",
           "PropertyName": "HintText",
-          "RuleProviderType": "Unknown"
+          "RuleProviderType": "User"
         },
         {
           "Category": "Data",
