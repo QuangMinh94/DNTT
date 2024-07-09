@@ -1,0 +1,19 @@
+Screen1 As screen:
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+
+    ButtonCanvas2 As Button:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Width: =96
+        X: =354
+        Y: =290
+        ZIndex: =1
+
+    ButtonCanvas4 As Button:
+        DisplayMode: =DisplayMode.Edit
+        Height: =32
+        Width: =96
+        X: =937
+        Y: =295
+        ZIndex: =2
+
