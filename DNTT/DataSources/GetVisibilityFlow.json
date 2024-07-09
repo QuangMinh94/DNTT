@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "6d38fc0e-b317-4448-98f7-3acd4f481a50",
+    "Name": "GetVisibilityFlow",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "b37789be-f017-ef11-9f89-002248edde06"
+  }
+]

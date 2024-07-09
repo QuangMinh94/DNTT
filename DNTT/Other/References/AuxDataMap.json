@@ -1,0 +1,3 @@
+{
+  "AppFromDataMetaDataIdsToEntityNameMappings": "{\"%DataSourceName.AFD%\":\"ApprovalRequest1S\",\"%DataSourceValue.AFD%\":\"[@ApprovalRequest1S]\",\"%SortFieldName.AFD%\":\"\\\"crbea_approvalid\\\"\",\"%FilterFieldName.AFD%\":\"crbea_approvalid\",\"%PrimaryNameField.AFD%\":\"crbea_title\",\"%PrimaryNameFieldDisplayName.AFD%\":\"'Title'\",\"%SearchFieldName.AFD%\":\"crbea_approvalid,crbea_contentapproval,crbea_departmentcreator\",\"%StartsWithFieldName.AFD%\":\"crbea_approvalid\",\"%DeleteConfirmFieldName.AFD%\":\"crbea_approvalid\",\"%SortDescending.AFD%\":\"SortDescending1\",\"%CopilotSinglePageScreen.ID%\":\"'ApprovalRequest1S screen'\",\"%BrowseContainer.ID%\":\"BrowseGallery1\",\"%DetailEditContainer.ID%\":\"EditForm1\"}"
+}

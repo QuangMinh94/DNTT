@@ -1,0 +1,317 @@
+MultiStepProgessIndicator_2 As CanvasComponent:
+    AccountingStep: |-
+        =ColorValue("#FFFFFF")
+    ApproverStep: |-
+        =ColorValue("#0F94EE")
+    ColorDefaultActive: |-
+        =ColorValue("#0F94EE")
+    ColorRejectDefault: |-
+        =ColorValue("#F11A1A")
+    ColorSkipDefault: |-
+        =ColorValue("#D9D9D9")
+    ColorSuccessDefault: |-
+        =ColorValue("#4ADE80")
+    CompletedStep: |-
+        =ColorValue("#FFFFFF")
+    EscalatedStep: |-
+        =ColorValue("#FFFFFF")
+    Executor: ="Text"
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =250
+    MultiStepStyles: |+
+        ={
+            fontSizeTitle: 13,
+            fontSizeSubtitle: 10,
+            bodyColor: RGBA(0,0,0,1),
+            activeColor: RGBA(255,255,255,1),
+            positionColor: RGBA(74, 222, 128, 1),
+            primaryColor: RGBA(15, 148, 238, 1)
+        }
+        
+    StartedStep: |-
+        =ColorValue("#4ADE80")
+    Steps: |-
+        =Table(
+            {
+                Number: 1,
+                Title: "Đã tạo đơn",
+                Executor: MultiStepProgessIndicator_2.Executor,
+                Active: If(MultiStepProgessIndicator_2.StartedStep = MultiStepProgessIndicator_2.ColorDefaultActive, true, false),
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 2,
+                Title: "Cấp quản lý",
+                Executor: MultiStepProgessIndicator_2.Executor,
+                Active: If(MultiStepProgessIndicator_2.ApproverStep = MultiStepProgessIndicator_2.ColorDefaultActive, true, false),
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 3,
+                Title: "Kế toán",
+                Executor: MultiStepProgessIndicator_2.Executor,
+                Active: If(MultiStepProgessIndicator_2.AccountingStep = MultiStepProgessIndicator_2.ColorDefaultActive, true, false),
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 4,
+                Title: "Ban giám đốc",
+                Executor: MultiStepProgessIndicator_2.Executor,
+                Active: If(MultiStepProgessIndicator_2.EscalatedStep = MultiStepProgessIndicator_2.ColorDefaultActive, true, false),
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 5,
+                Title: "Hoàn thành",
+                Executor: MultiStepProgessIndicator_2.Executor,
+                Active: If(MultiStepProgessIndicator_2.CompletedStep = MultiStepProgessIndicator_2.ColorDefaultActive, true, false),
+                Screen: App.ActiveScreen
+            }
+        )
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =6
+
+    Gallery8_2 As gallery.galleryHorizontal:
+        '#CopilotOverlayLabel': ="Filtered"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height
+        Items: =Parent.Steps
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =Parent.Width  / Max(Gallery8_2.AllItemsCount, 2)
+        Width: =Parent.Width
+        ZIndex: =1
+
+        txtLeft_2 As text:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =""
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: |-
+                =If(
+                    ThisItem.Active = false && ThisItem.Number < LookUp(MultiStepProgessIndicator_2.Steps, Active).Number,
+                    MultiStepProgessIndicator_2.MultiStepStyles.positionColor,
+                    RGBA(214, 221, 224, 1)
+                )
+            DisplayMode: =DisplayMode.Disabled
+            FocusedBorderThickness: =4
+            Height: |-
+                =If(
+                    ThisItem.Number = 1, 
+                    0, 
+                    10
+                )
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(214, 221, 224, 1)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =0
+            RadiusTopLeft: |
+                =0
+            Size: =13
+            Width: =Parent.TemplateWidth *30%
+            Y: =ctrCircleLabel_2.Y + ctrCircleLabel_2.Height /2 - Self.Height /2
+            ZIndex: =2
+
+        txtRight_2 As text:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =""
+            DisabledBorderColor: =RGBA(122, 138, 143, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: |-
+                =If(
+                    ThisItem.Active = false &&
+                    LookUp(
+                        MultiStepProgessIndicator_2.Steps,
+                        Number = ThisItem.Number + 1,
+                        Active
+                    ) = false && 
+                    ThisItem.Number < LookUp(MultiStepProgessIndicator_2.Steps, Active).Number,
+                    MultiStepProgessIndicator_2.MultiStepStyles.positionColor,
+                    RGBA(214, 221, 224, 1)
+                )
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(214, 221, 224, 1)
+            FocusedBorderThickness: =4
+            Height: |-
+                =If(
+                    ThisItem.Number = CountRows(MultiStepProgessIndicator_2.Steps), 
+                    0, 
+                    10
+                )
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnSelect: =Select(Parent)
+            RadiusBottomRight: |
+                =0
+            RadiusTopRight: |
+                =0
+            Size: =13
+            Width: =Parent.TemplateWidth *30%
+            X: =Parent.TemplateWidth - Self.Width
+            Y: =ctrCircleLabel_2.Y + ctrCircleLabel_2.Height /2 - Self.Height /2
+            ZIndex: =3
+
+        lblStepTitle_2 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Size: =MultiStepProgessIndicator_2.MultiStepStyles.fontSizeTitle
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth
+            Y: =ctrCircleLabel_2.Y + ctrCircleLabel_2.Height + 30
+            ZIndex: =4
+
+        ctrCircleLabel_2 As groupContainer.manualLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =1
+            DropShadow: =DropShadow.Semibold
+            Height: =70
+            RadiusBottomLeft: =99999
+            RadiusBottomRight: =99999
+            RadiusTopLeft: =99999
+            RadiusTopRight: =99999
+            Width: =70
+            X: =(Parent.TemplateWidth - Self.Width)/2
+            Y: =61
+            ZIndex: =5
+
+            shpCircle_2 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =/*If(
+                        ThisItem.Active,
+                        MultiStepProgessIndicator_2.MultiStepStyles.primaryColor,
+                        If(
+                            ThisItem.Number < LookUp(MultiStepProgessIndicator_2.Steps, Active).Number,
+                            ColorFade(MultiStepProgessIndicator_2.MultiStepStyles.positionColor, 10%),
+                            RGBA(0,0,0,0)
+                        )
+                    )*/
+                    Switch(
+                        ThisItem.Number,
+                        1, MultiStepProgessIndicator_2.StartedStep,
+                        2, MultiStepProgessIndicator_2.ApproverStep,
+                        3, MultiStepProgessIndicator_2.AccountingStep,
+                        4, MultiStepProgessIndicator_2.EscalatedStep,
+                        5, MultiStepProgessIndicator_2.CompletedStep
+                    )
+                Height: =Parent.Height
+                OnSelect: =
+                Width: =Parent.Width
+                ZIndex: =1
+
+            lblStepNumber_2 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =If(
+                        ThisItem.Active,
+                        MultiStepProgessIndicator_2.MultiStepStyles.activeColor,
+                        MultiStepProgessIndicator_2.MultiStepStyles.bodyColor
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =16
+                Text: =ThisItem.Number
+                Visible: |-
+                    =If(
+                        ThisItem.Number < LookUp(
+                            MultiStepProgessIndicator_2.Steps,
+                            Active
+                        ).Number,
+                        If(
+                            shpCircle_2.Fill = MultiStepProgessIndicator_2.ColorSkipDefault,
+                            true, false
+                        ),
+                        true
+                    )
+                Width: =Parent.Width
+                Y: |
+                    =0
+                ZIndex: =2
+
+            icnStepComplete_2 As icon.Check:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =MultiStepProgessIndicator_2.MultiStepStyles.activeColor
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =shpCircle_2.Height/2
+                Icon: =Icon.Check
+                OnSelect: =
+                Visible: |-
+                    =If(
+                        ThisItem.Number < LookUp(
+                            MultiStepProgessIndicator_2.Steps,
+                            Active
+                        ).Number,
+                        If(
+                            shpCircle_2.Fill = MultiStepProgessIndicator_2.ColorSuccessDefault,
+                            true,
+                            false
+                        ),
+                        false
+                    )
+                Width: =shpCircle_2.Width/2
+                X: =shpCircle_2.X + (shpCircle_2.Width-Self.Width)/2
+                Y: =shpCircle_2.Y + (shpCircle_2.Height-Self.Height)/2
+                ZIndex: =3
+
+            icnStepComplete_3 As icon.Check:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =MultiStepProgessIndicator_2.MultiStepStyles.activeColor
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =shpCircle_2.Height/2
+                Icon: =Icon.Cancel
+                OnSelect: =
+                Visible: |-
+                    =If(
+                        ThisItem.Active = true && shpCircle_2.Fill = MultiStepProgessIndicator_2.ColorRejectDefault,
+                        true, false
+                    )
+                Width: =shpCircle_2.Width/2
+                X: =shpCircle_2.X + (shpCircle_2.Width-Self.Width)/2
+                Y: =shpCircle_2.Y + (shpCircle_2.Height-Self.Height)/2
+                ZIndex: =4
+
+        lblStepSubtitle_2 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(122, 138, 143, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =MultiStepProgessIndicator_2.MultiStepStyles.fontSizeSubtitle
+            Text: =ThisItem.Executor
+            Visible: |-
+                =If(
+                    ThisItem.Number < LookUp(
+                        MultiStepProgessIndicator_2.Steps,
+                        Active
+                    ).Number || ThisItem.Number > LookUp(
+                        MultiStepProgessIndicator_2.Steps,
+                        Active
+                    ).Number,
+                    false,
+                    true
+                )
+            Width: =Parent.TemplateWidth
+            Y: =lblStepTitle_2.Y+ lblStepTitle_2.Height
+            ZIndex: =6
+

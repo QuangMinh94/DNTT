@@ -1,0 +1,209 @@
+Header As CanvasComponent:
+    colorCircleNoti: =RGBA(241, 26, 26, 1)
+    customHeight: |
+        =70
+    customWidth: =App.Width
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =70
+    hoverFill: =RGBA(237, 237, 237, 0.4)
+    onCtrAvatar: =true
+    onCtrNotification: =true
+    onCtrSettings: =true
+    sizeCircle: =50
+    Width: =640
+    X: =0
+    Y: =0
+    ZIndex: =1
+
+    Container1 As groupContainer.horizontalAutoLayoutContainer:
+        Height: =Parent.Height
+        LayoutAlignItems: =LayoutAlignItems.Stretch
+        LayoutJustifyContent: =LayoutJustifyContent.End
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        X: =Parent.X
+        Y: =Parent.Y
+        ZIndex: =1
+
+        ctrNotification As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderStyle: =BorderStyle.None
+            FillPortions: =0
+            Height: =225
+            LayoutMinHeight: =0
+            LayoutMinWidth: =250
+            PaddingTop: |
+                =0
+            Visible: =Header.onCtrNotification
+            Width: =50
+            ZIndex: =1
+
+            Image3 As image:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Height: =Button2_1.Height
+                Image: |-
+                    ="data:image/svg+xml;utf8, " & EncodeUrl(
+                        If(
+                            sltBell,
+                            "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-bell' viewBox='0 0 16 16'>
+                            <path d='M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6'/>
+                            </svg>",
+                            "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='yellow' class='bi bi-bell-fill' viewBox='0 0 16 16'>
+                            <path d='M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901'/>
+                            </svg>"
+                    
+                        )
+                        
+                    )
+                PaddingBottom: =10
+                PaddingLeft: =8
+                PaddingRight: =8
+                PaddingTop: =10
+                Width: =Button2_1.Width
+                X: =Button2_1.X
+                Y: =Button2_1.Y
+                ZIndex: =1
+
+            Button2_1 As button:
+                BorderColor: =If(sltBell,RGBA(0, 0, 0, 0),RGBA(241, 244, 249, 0.5))
+                BorderThickness: =1
+                Color: =RGBA(0, 0, 0, 0)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                FocusedBorderThickness: =1
+                FontWeight: =FontWeight.Semibold
+                Height: =Header.sizeCircle - 10
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =Header.hoverFill
+                OnSelect: =Set(sltBell, !sltBell);
+                PressedBorderColor: =Self.BorderColor
+                RadiusBottomLeft: =999
+                RadiusBottomRight: =999
+                RadiusTopLeft: =999
+                RadiusTopRight: =999
+                Size: =24
+                Text: =
+                Width: =Header.sizeCircle - 10
+                X: =(Parent.Width - Self.Width)/2
+                Y: =(Parent.Height - Self.Height)/2
+                ZIndex: =2
+
+            Circle1 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: =Header.colorCircleNoti
+                Height: =8
+                Width: =8
+                X: =Image3.Width - Self.Width -1
+                Y: =Image3.PaddingTop/2 + Image3.Y
+                ZIndex: =3
+
+        ctrAvatar As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderStyle: =BorderStyle.None
+            FillPortions: =0
+            Height: =225
+            LayoutMinHeight: =Parent.Height
+            LayoutMinWidth: =250
+            Visible: =Header.onCtrAvatar
+            Width: =60
+            ZIndex: =2
+
+            Image2_2 As image:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Height: =Button2_2.Height
+                Image: =User().Image
+                ImagePosition: =ImagePosition.Fill
+                RadiusBottomLeft: =999
+                RadiusBottomRight: =999
+                RadiusTopLeft: =999
+                RadiusTopRight: =999
+                Width: =Button2_2.Width
+                X: =Button2_2.X
+                Y: =Button2_2.Y
+                ZIndex: =1
+
+            Button2_2 As button:
+                BorderStyle: =BorderStyle.None
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =Header.sizeCircle
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                RadiusBottomLeft: =999
+                RadiusBottomRight: =999
+                RadiusTopLeft: =999
+                RadiusTopRight: =999
+                Size: =24
+                Text: =
+                Width: =Header.sizeCircle
+                X: =(Parent.Width - Self.Width)/2
+                Y: =(Parent.Height - Self.Height)/2
+                ZIndex: =2
+
+        ctrSettings As groupContainer.manualLayoutContainer:
+            AlignInContainer: =AlignInContainer.SetByContainer
+            BorderStyle: =BorderStyle.None
+            FillPortions: =0
+            Height: =225
+            LayoutMinHeight: =0
+            LayoutMinWidth: =250
+            Visible: =Header.onCtrSettings
+            Width: =50
+            ZIndex: =3
+
+            Icon1 As icon.ChevronDown:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =Button2_6.Height
+                Icon: =Icon.ChevronDown
+                PaddingBottom: =12
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =12
+                Rotation: =If(sltSettings, 180, 0)
+                Width: =Button2_6.Width
+                X: =Button2_6.X
+                Y: =Button2_6.Y
+                ZIndex: =1
+
+            Button2_6 As button:
+                BorderStyle: =BorderStyle.None
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                Fill: =RGBA(0, 0, 0, 0)
+                FontWeight: =FontWeight.Semibold
+                Height: =Header.sizeCircle - 10
+                HoverColor: =RGBA(255, 255, 255, 1)
+                HoverFill: =Header.hoverFill
+                OnSelect: =Set(sltSettings, !sltSettings)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedFill: =Self.Fill
+                RadiusBottomLeft: =999
+                RadiusBottomRight: =999
+                RadiusTopLeft: =999
+                RadiusTopRight: =999
+                Size: =24
+                Text: =
+                Width: =Header.sizeCircle - 10
+                X: =(Parent.Width - Self.Width)/2
+                Y: =(Parent.Height - Self.Height)/2
+                ZIndex: =2
+

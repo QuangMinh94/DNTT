@@ -1,0 +1,262 @@
+MultiStepProgessIndicator As CanvasComponent:
+    AccountingStep: =RGBA(0, 0, 0, 1)
+    ApproverStep: =RGBA(0, 0, 0, 1)
+    CompletedStep: =RGBA(0, 0, 0, 1)
+    EscalatedStep: =RGBA(0, 0, 0, 1)
+    Fill: =RGBA(0, 0, 0, 0)
+    Height: =250
+    MultiStepStyles: |+
+        ={
+            fontSizeTitle: 13,
+            fontSizeSubtitle: 10,
+            bodyColor: RGBA(0,0,0,1),
+            activeColor: RGBA(255,255,255,1), 
+            positionColor: RGBA(74, 222, 128, 1),
+            primaryColor: RGBA(15, 148, 238, 1)
+        }
+        
+    StartedStep: =RGBA(0, 0, 0, 1)
+    Steps: |-
+        =Table(
+            {
+                Number: 1,
+                Title: "Đã tạo đơn",
+                Executor: "Đã tạo đơn",
+                Active: false,
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 2,
+                Title: "Cấp quản lý",
+                Executor: "Cấp quản lý",
+                Active: true,
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 3,
+                Title: "Kế toán",
+                Executor: "Kế toán",
+                Active: false,
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 4,
+                Title: "Ban giám đốc",
+                Executor: "Đã hoàn thành",
+                Active: false,
+                Screen: App.ActiveScreen
+            },
+            {
+                Number: 5,
+                Title: "Hoàn thành",
+                Executor: "Đã hoàn thành",
+                Active: false,
+                Screen: App.ActiveScreen
+            }
+        )
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =6
+
+    Gallery8_1 As gallery.galleryHorizontal:
+        '#CopilotOverlayLabel': ="Filtered"
+        BorderColor: =RGBA(0, 18, 107, 1)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =1
+        DelayItemLoading: =true
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height
+        Items: =Parent.Steps
+        LoadingSpinner: =LoadingSpinner.Data
+        ShowScrollbar: =false
+        TemplatePadding: =0
+        TemplateSize: =Parent.Width  / Max(Gallery8_1.AllItemsCount, 2)
+        Width: =Parent.Width
+        ZIndex: =1
+
+        txtLeft_1 As text:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =""
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: |-
+                =If(
+                    ThisItem.Active = false && ThisItem.Number < LookUp(MultiStepProgessIndicator.Steps, Active).Number,
+                    MultiStepProgessIndicator.MultiStepStyles.positionColor,
+                    RGBA(214, 221, 224, 1)
+                )
+            DisplayMode: =DisplayMode.Disabled
+            FocusedBorderThickness: =4
+            Height: |-
+                =If(
+                    ThisItem.Number = 1, 
+                    0, 
+                    10
+                )
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(214, 221, 224, 1)
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =0
+            RadiusTopLeft: |
+                =0
+            Size: =13
+            Width: =Parent.TemplateWidth *30%
+            Y: =ctrCircleLabel_1.Y + ctrCircleLabel_1.Height /2 - Self.Height /2
+            ZIndex: =2
+
+        txtRight_1 As text:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =2
+            Color: =RGBA(0, 0, 0, 1)
+            Default: =""
+            DisabledBorderColor: =RGBA(122, 138, 143, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: |-
+                =If(
+                    ThisItem.Active = false &&
+                    LookUp(
+                        MultiStepProgessIndicator.Steps,
+                        Number = ThisItem.Number + 1,
+                        Active
+                    ) = false && 
+                    ThisItem.Number < LookUp(MultiStepProgessIndicator.Steps, Active).Number,
+                    MultiStepProgessIndicator.MultiStepStyles.positionColor,
+                    RGBA(214, 221, 224, 1)
+                )
+            DisplayMode: =DisplayMode.Disabled
+            Fill: =RGBA(214, 221, 224, 1)
+            FocusedBorderThickness: =4
+            Height: |-
+                =If(
+                    ThisItem.Number = CountRows(MultiStepProgessIndicator.Steps), 
+                    0, 
+                    10
+                )
+            HoverBorderColor: =RGBA(0, 18, 107, 1)
+            HoverColor: =RGBA(0, 0, 0, 1)
+            HoverFill: =RGBA(186, 202, 226, 1)
+            OnSelect: =Select(Parent)
+            RadiusBottomRight: |
+                =0
+            RadiusTopRight: |
+                =0
+            Size: =13
+            Width: =Parent.TemplateWidth *30%
+            X: =Parent.TemplateWidth - Self.Width
+            Y: =ctrCircleLabel_1.Y + ctrCircleLabel_1.Height /2 - Self.Height /2
+            ZIndex: =3
+
+        lblStepTitle_1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Semibold
+            Size: =MultiStepProgessIndicator.MultiStepStyles.fontSizeTitle
+            Text: =ThisItem.Title
+            Width: =Parent.TemplateWidth
+            Y: =ctrCircleLabel_1.Y + ctrCircleLabel_1.Height + 30
+            ZIndex: =4
+
+        ctrCircleLabel_1 As groupContainer.manualLayoutContainer:
+            BorderStyle: =BorderStyle.None
+            BorderThickness: =1
+            DropShadow: =DropShadow.Semibold
+            Height: =70
+            RadiusBottomLeft: =99999
+            RadiusBottomRight: =99999
+            RadiusTopLeft: =99999
+            RadiusTopRight: =99999
+            Width: =70
+            X: =(Parent.TemplateWidth - Self.Width)/2
+            Y: =61
+            ZIndex: =5
+
+            shpCircle_1 As circle:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Fill: |-
+                    =If(
+                        ThisItem.Active,
+                        MultiStepProgessIndicator.MultiStepStyles.primaryColor,
+                        If(
+                            ThisItem.Number < LookUp(MultiStepProgessIndicator.Steps, Active).Number,
+                            ColorFade(MultiStepProgessIndicator.MultiStepStyles.positionColor, 10%),
+                            RGBA(0,0,0,0)
+                        )
+                    )
+                Height: =Parent.Height
+                OnSelect: =
+                Width: =Parent.Width
+                ZIndex: =1
+
+            lblStepNumber_1 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: |-
+                    =If(
+                        ThisItem.Active,
+                        MultiStepProgessIndicator.MultiStepStyles.activeColor,
+                        MultiStepProgessIndicator.MultiStepStyles.bodyColor
+                    )
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =Parent.Height
+                Size: =16
+                Text: =ThisItem.Number
+                Visible: |-
+                    =If(
+                        ThisItem.Number < LookUp(MultiStepProgessIndicator.Steps, Active).Number,
+                        false, true
+                    )
+                Width: =Parent.Width
+                Y: |
+                    =0
+                ZIndex: =2
+
+            icnStepComplete_1 As icon.Check:
+                BorderColor: =RGBA(0, 18, 107, 1)
+                Color: =MultiStepProgessIndicator.MultiStepStyles.activeColor
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =shpCircle_1.Height/2
+                Icon: =Icon.Check
+                OnSelect: =
+                Visible: |-
+                    =If(
+                        ThisItem.Number < LookUp(MultiStepProgessIndicator.Steps, Active).Number,
+                        true, false
+                    )
+                Width: =shpCircle_1.Width/2
+                X: =shpCircle_1.X + (shpCircle_1.Width-Self.Width)/2
+                Y: =shpCircle_1.Y + (shpCircle_1.Height-Self.Height)/2
+                ZIndex: =3
+
+        lblStepSubtitle_1 As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(0, 18, 107, 1)
+            Color: =RGBA(122, 138, 143, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Size: =MultiStepProgessIndicator.MultiStepStyles.fontSizeSubtitle
+            Text: =ThisItem.Executor
+            Visible: |-
+                =If(
+                    ThisItem.Number < LookUp(
+                        MultiStepProgessIndicator.Steps,
+                        Active
+                    ).Number || ThisItem.Number > LookUp(
+                        MultiStepProgessIndicator.Steps,
+                        Active
+                    ).Number,
+                    false,
+                    true
+                )
+            Width: =Parent.TemplateWidth
+            Y: =lblStepTitle_1.Y+ lblStepTitle_1.Height
+            ZIndex: =6
+

@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "2377b0de-88ed-4e5e-8a19-d9aaa2f83ab9",
+    "Name": "InsertChildGoodServicesAndTaxs",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "5fa43521-8a33-ef11-8e4e-000d3a80dc24"
+  }
+]

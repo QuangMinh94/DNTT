@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "10f04c61-e026-4bc8-aa01-583867bbea11",
+    "Name": "ColorFlow",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "4ec6378a-ba23-ef11-840a-000d3a80f58b"
+  }
+]

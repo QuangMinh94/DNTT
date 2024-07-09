@@ -1,0 +1,82 @@
+Navbar As CanvasComponent:
+    btnNavigate: =
+    colorNavBar: =RGBA(7, 152, 173, 1)
+    Fill: =RGBA(0, 0, 0, 0)
+    fontSize: =21
+    Height: =45
+    textLabel: ="Text"
+    Width: =App.Width
+    X: =0
+    Y: =0
+    ZIndex: =2
+
+    Rectangle2 As rectangle:
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Fill: =Parent.colorNavBar
+        Height: =Parent.Height
+        Width: =Parent.Width
+        ZIndex: =1
+
+    Container4 As groupContainer.manualLayoutContainer:
+        BorderStyle: =BorderStyle.None
+        Height: =Parent.Height - 10
+        RadiusBottomLeft: =999
+        RadiusBottomRight: =999
+        RadiusTopLeft: =999
+        RadiusTopRight: =999
+        Width: =Self.Height
+        X: =Parent.X + 5
+        Y: =(Parent.Height - Self.Height)/2
+        ZIndex: =3
+
+        Image1_1 As image:
+            BorderColor: =RGBA(0, 18, 107, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =Parent.Height
+            Image: =BackNavBar
+            Width: =Parent.Width
+            ZIndex: =1
+
+        Button3_1 As button:
+            BorderStyle: =BorderStyle.None
+            Color: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(0, 0, 0, 0)
+            FontWeight: =FontWeight.Semibold
+            Height: =Parent.Height
+            HoverColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =RGBA(0, 0, 0, 0.1)
+            OnSelect: =If(IsBlank(Navbar.btnNavigate), Back() ,Navigate(Navbar.btnNavigate))
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            PressedFill: =RGBA(0, 0, 0, 0.2)
+            RadiusBottomLeft: =999
+            RadiusBottomRight: =999
+            RadiusTopLeft: =999
+            RadiusTopRight: =999
+            Size: =24
+            Text: =
+            Width: =Parent.Width
+            Y: |
+                =0
+            ZIndex: =2
+
+    Label1_4 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(0, 18, 107, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =Parent.Height
+        Size: =Navbar.fontSize
+        Text: =Navbar.textLabel
+        Width: =Parent.Width - Container4.Width - Container4.X
+        X: =Container4.X + Container4.Width
+        Y: =Container4.Y -5
+        ZIndex: =4
+

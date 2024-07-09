@@ -1,0 +1,10 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_logicflows",
+    "FlowNameId": "14c1da7b-1dcc-4b35-8c9a-8244c0b708c6",
+    "Name": "UploadAttachmentInvoices",
+    "ServiceKind": "ConnectedWadl",
+    "Type": "ServiceInfo",
+    "WorkflowEntityId": "f2e22b31-e131-ef11-8e4e-000d3a80dc24"
+  }
+]

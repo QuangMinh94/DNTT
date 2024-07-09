@@ -1,0 +1,18 @@
+"'18cc1608-f6ec-4d77-b35e-759bb7d43c01' As TestSuite":
+    Description: =""
+    DisplayName: ="Suite"
+
+    "'fa236581-aaa9-444a-8daf-e6e04875ca83' As TestCase":
+        Description: =""
+        DisplayName: ="Case"
+
+        Step1 As TestStep:
+            Description: ="Set 'txtSearch'.Text to ""ádfasdf"""
+            Screen: =Screen_Home_Approval
+            Value: =SetProperty(txtSearch.Text, "ádfasdf")
+
+        Step2 As TestStep:
+            Description: ="Select 'Button2'"
+            Screen: =Screen_Home_Approval
+            Value: =Select(Button2)
+

@@ -1,0 +1,27 @@
+{
+  "ComponentAllowCustomization": true,
+  "ComponentChangedSinceFileImport": false,
+  "ComponentManifest": {
+    "AllowAccessToGlobals": false,
+    "AllowCustomization": true,
+    "Description": "",
+    "Name": "SideNavigation_Mutiple",
+    "TemplateGuid": "00caad3515fa42549e2d7f5db0e4e56f"
+  },
+  "ComponentType": "CanvasComponent",
+  "CustomGroupControlTemplateName": "",
+  "CustomProperties": [],
+  "FirstParty": true,
+  "Id": "http://microsoft.com/appmagic/Component",
+  "IsComponentLocked": false,
+  "IsComponentTemplate": true,
+  "IsCustomGroupControlTemplate": false,
+  "IsPcfControl": false,
+  "IsPremiumPcfControl": false,
+  "IsWidgetTemplate": false,
+  "LastModifiedTimestamp": "638561119835857442",
+  "Name": "00caad3515fa42549e2d7f5db0e4e56f",
+  "OverridableProperties": {},
+  "TemplateOriginalName": "f53a6c7680eb4e3aa145cae6f5a2b7b1",
+  "Version": "1.0"
+}
