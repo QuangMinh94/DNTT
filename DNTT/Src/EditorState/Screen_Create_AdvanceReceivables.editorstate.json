@@ -29300,7 +29300,7 @@
       "MetaDataIDKey": "",
       "Name": "Dropdown2_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 6,
+      "ParentIndex": 5,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -40654,7 +40654,7 @@
       "MetaDataIDKey": "",
       "Name": "Label6_3",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 4,
+      "ParentIndex": 6,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -50926,7 +50926,7 @@
       "MetaDataIDKey": "",
       "Name": "TextCanvas6_1",
       "OptimizeForDevices": "Off",
-      "ParentIndex": 5,
+      "ParentIndex": 4,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
